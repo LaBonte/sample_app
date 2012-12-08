@@ -41,14 +41,6 @@ describe User do
       end    
   end
 
-  # describe "admin attribute accessibility" do
-  #   it "should not allow admin access" do
-  #     expect do
-  #       User.new(admin: true)
-  #     end
-  #   end
-  # end
-
   describe "with admin attribute set to 'true'" do
     before do
       @user.save!
