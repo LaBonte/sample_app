@@ -34,4 +34,11 @@ describe Relationship do
     before { relationship.follower_id = nil }
     it { should_not be_valid }
   end
+
+  it "should destroy associated relationships" do
+    relationship.save
+    Relationship.find_by_id(relationship.id) == relationship.id
+    relationship.destroy
+    Relationship.find_by_id(relationship.id).should be_nil
+  end
 end
