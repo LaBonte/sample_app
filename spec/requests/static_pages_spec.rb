@@ -42,6 +42,19 @@ describe "Static pages" do
         it { should have_link("0 following", href: following_user_path(user)) }
         it { should have_link("1 followers", href: followers_user_path(user)) }
       end
+
+      describe "2 followers stat" do
+        let(:first) { FactoryGirl.create(:user) }
+        let(:second) { FactoryGirl.create(:user) }
+        before do
+          first.follow!(user)
+          second.follow!(user)
+          visit root_path
+        end
+
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("2 followers", href: followers_user_path(user)) }
+      end
     end
   end
 
